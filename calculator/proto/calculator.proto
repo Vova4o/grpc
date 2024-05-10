@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package calculator;
+
+option go_package = "github.com/vova4o/grpc-go-study/calculator/proto";
+
+import "sqrt.proto";
+
+message GetPrimeNumbers {
+    int64 number = 1;
+}
+
+message GetPrimeNumbersResponse {
+    int64 result = 1;
+}
+
+message GetAverageSummNumbersResponse {
+    double result = 1;
+}
+
+service PrimeNumberService {
+    rpc Numbers(GetPrimeNumbers) returns (stream GetPrimeNumbersResponse);
+    rpc AverageOfSumm(stream GetPrimeNumbers) returns (GetAverageSummNumbersResponse);
+    rpc Sqrt (SqrtRequest) returns (SqrtResponse);
+}

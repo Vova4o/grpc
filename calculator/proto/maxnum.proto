@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package calculator;
+
+option go_package = "github.com/vova4o/grpc-go-study/calculator/proto";
+
+message GetMaxNumberRequest {
+    int64 number = 1;
+}
+
+message GetMaxNumberResponse {
+    int64 result = 1;
+}
+
+service MaxNumberService {
+    rpc GetMaxNumber(stream GetMaxNumberRequest) returns (stream GetMaxNumberResponse);
+}
